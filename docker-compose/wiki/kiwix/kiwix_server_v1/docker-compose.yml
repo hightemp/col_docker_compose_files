@@ -1,0 +1,16 @@
+---
+version: "3.1"
+services:
+  kiwix_server:
+    image: kiwix/kiwix-serve
+    container_name: kiwix_server
+    volumes:
+      - ./data:/data
+    ports:
+      - 8181:80
+    command:
+      - '*.zim'
+        #environment:
+        #  - 'DOWNLOAD=https://download.kiwix.org/zim/wikipedia/wikipedia_en_all_maxi_2021-03.zim'
+    restart: unless-stopped
+    network_mode: bridge

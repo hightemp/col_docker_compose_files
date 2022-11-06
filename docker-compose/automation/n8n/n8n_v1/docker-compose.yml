@@ -1,0 +1,67 @@
+version: "3"
+
+networks:
+  proxy_net:
+    external:
+      name: proxy_net
+
+services:
+  mongodb:
+    image: mongo:4.4
+    ports:
+      - 27017:27017
+    volumes:
+      - ./apps/mongo:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=user
+    networks:
+      - proxy_net
+  mongo-express:
+    image: mongo-express:latest
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_OPTIONS_EDITORTHEME=ambiance
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_BASICAUTH_USERNAME=user
+      - ME_CONFIG_BASICAUTH_PASSWORD=user
+    depends_on:
+      - mongodb
+    networks:
+      - proxy_net
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: n8n_db
+    # ports:
+    #  - "3307:3306"
+    networks:
+      - proxy_net
+  n8n:
+    image: n8nio/n8n
+    restart: always
+    # ports:
+    #  - "127.0.0.1:5678:5678"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy_net"
+      - "traefik.http.routers.n8n.rule=Host(`${PREFIX}wapp_diagrams.local`) || Host(`${PREFIX}wapp_diagrams.localhost`)"
+    environment:
+        #      - SSL=off
+        #      - N8N_BASIC_AUTH_ACTIVE=true
+        #      - N8N_BASIC_AUTH_USER
+        #      - N8N_BASIC_AUTH_PASSWORD
+      - NODE_FUNCTION_ALLOW_BUILTIN=*
+      - N8N_HOST=${DOMAIN_NAME}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - NODE_ENV=production
+      - WEBHOOK_URL=https://${DOMAIN_NAME}/
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+    volumes:
+      - ${DATA_FOLDER}/.n8n:/home/node/.n8n
+    networks:
+      - proxy_net

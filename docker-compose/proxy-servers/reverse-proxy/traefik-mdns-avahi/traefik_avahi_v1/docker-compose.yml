@@ -2,7 +2,7 @@ version: '3'
 
 networks:
   default:
-    name: proxy_net
+    name: localhost_net
 
 services:
   reverse-proxy:
