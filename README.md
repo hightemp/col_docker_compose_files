@@ -16,7 +16,8 @@
   - kiwix
     - [kiwix_server_v1](docker-compose/wiki/kiwix/kiwix_server_v1/docker-compose.yml)
 - Автоматизация
-  - [n8n](docker-compose/automation/n8n/n8n_v1/README.md)
+  - n8n
+    - [n8n_v1](docker-compose/automation/n8n/n8n_v1/README.md)
 - Docker 
   - Сети
     - [Создание локальной сети с драйвером bridge](docs/networks/create-network.md)
