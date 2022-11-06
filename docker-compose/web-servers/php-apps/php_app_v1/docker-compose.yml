@@ -6,7 +6,6 @@ networks:
 services:
   nginx:
     restart: always
-    hostname: wapp_notes.local
     build:
       context: ./nginx
       dockerfile: Dockerfile
