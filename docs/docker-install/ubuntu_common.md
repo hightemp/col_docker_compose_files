@@ -93,6 +93,30 @@ docker compose version
 ## Установка docker-machine
 
 - https://github.com/docker/machine
+- 
+### В-1 Автоматическая
+
+```bash
+base=https://github.com/docker/machine/releases/download/v0.14.0 &&
+  curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine &&
+  sudo install /tmp/docker-machine /usr/local/bin/docker-machine
+docker-machine version
+
+# Install bash completion scripts
+# Confirm the version and save scripts to /etc/bash_completion.d or /usr/local/etc/bash_completion.d
+base=https://raw.githubusercontent.com/docker/machine/v0.14.0
+for i in docker-machine-prompt.bash docker-machine-wrapper.bash docker-machine.bash
+do
+  sudo wget "$base/contrib/completion/bash/${i}" -P /etc/bash_completion.d
+done
+
+source /etc/bash_completion.d/docker-machine-prompt.bash
+
+# ~/.bashrc
+echo "PS1='[\u@\h \W$(__docker_machine_ps1)]\$ '" >> ~/.bashrc
+```
+
+### В-2 Ручная установка
 
 ```bash
 git clone https://github.com/docker/machine
