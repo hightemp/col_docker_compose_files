@@ -90,6 +90,22 @@ sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 docker compose version
 ```
 
+## Установка docker-machine
+
+- https://github.com/docker/machine
+
+```bash
+git clone https://github.com/docker/machine
+cd machine
+make
+
+docker-machine create -d virtualbox default
+docker-machine ls
+eval "$(docker-machine env default)"
+docker run busybox echo hello world
+```
+
+
 ## Uninstall Docker Engine
 
 ```
