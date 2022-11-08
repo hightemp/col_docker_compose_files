@@ -1,6 +1,6 @@
-# col_docker_compose_files
+# Коллекции docker-compose файлов сервисов.
 
-Коллекции docker-compose файлов сервисов.
+- col_docker_compose_files https://github.com/hightemp/col_docker_compose_files
 
 ## Доки
 
