@@ -11,7 +11,7 @@
   - [Создание локальной сети с драйвером bridge](docs/networks/create-network.md)
 - Реестр, репозиторий, registry
   - [Как поднять docker registry](docs/registry/registry_common.md)
-- Ссылки
+- [Ссылки](docs/links/index.md)
 
 ## Шаблоны docker-compose файлы проектов
 
