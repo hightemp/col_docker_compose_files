@@ -69,6 +69,27 @@ sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 ```
 
+## Установка docker-compose
+
+### В-1 Автоматическая
+
+```
+sudo apt-get update
+sudo apt-get install docker-compose-plugin
+docker compose version
+```
+
+### В-2 Ручная установка
+
+```bash
+# Docker Compose for all users on your system, replace ~/.docker/cli-plugins with /usr/local/lib/docker/cli-plugins
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+mkdir -p $DOCKER_CONFIG/cli-plugins
+curl -SL https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+docker compose version
+```
+
 ## Uninstall Docker Engine
 
 ```
