@@ -25,6 +25,9 @@
     - [php_app_v1](docker-compose/web-servers/php-apps/php_app_v1/README.md)
 - Почтовые сервера
   - [docker-mailserver](docker-compose/mail-servers/docker-mailserver/README.md)
+- Репозитории
+  - git
+    - [gogs_v1](docker-compose/repositories/git-servers/gogs/gogs_v1/README.md)
 - Wiki
   - kiwix
     - [kiwix_server_v1](docker-compose/wiki/kiwix/kiwix_server_v1/docker-compose.yml)
