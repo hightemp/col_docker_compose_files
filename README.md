@@ -2,6 +2,19 @@
 
 Коллекции docker-compose файлов сервисов.
 
+## Доки
+
+- Установка
+  - Ubuntu
+    - [Установка docker на ubuntu](docs/docker-install/ubuntu_common.md)
+- Сети
+  - [Создание локальной сети с драйвером bridge](docs/networks/create-network.md)
+- Реестр, репозиторий, registry
+  - [Как поднять docker registry](docs/registry/registry_common.md)
+- Ссылки
+
+## Шаблоны docker-compose файлы проектов
+
 - Прокси
   - Traefik
     - [traefik_avahi_v1](docker-compose/proxy-servers/reverse-proxy/traefik-mdns-avahi/traefik_avahi_v1/README.md)
@@ -18,6 +31,3 @@
 - Автоматизация
   - n8n
     - [n8n_v1](docker-compose/automation/n8n/n8n_v1/README.md)
-- Docker 
-  - Сети
-    - [Создание локальной сети с драйвером bridge](docs/networks/create-network.md)
