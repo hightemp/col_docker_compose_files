@@ -1,0 +1,11 @@
+version: "3.1"
+
+services:
+  gogs_server:
+    image: ghcr.io/gogs/gogs:latest
+    container_name: gogs_server
+    ports:
+      - 10022:22
+      - 10880:3000
+    volumes:  
+      - ./data:/data
