@@ -3,13 +3,13 @@
 ## docker - ipvlan - wifi
 
 ```bash
-create_network.sh "localhost_net" wlp2s0
+create_network.sh localhost_net wlp2s0
 ```
 
 ```bash
 #!/bin/bash
 
-docker network rm $N
+docker network rm $1
 docker network create \
   --driver=ipvlan \
   --subnet=192.168.31.0/24 \
