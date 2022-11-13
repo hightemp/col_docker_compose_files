@@ -2,7 +2,7 @@
 
 if [ "$1" == "" -o "$2" == "" ]; then
     echo "USAGE:"
-    echo "  create_network.sh localhost_net wlp2s0"
+    echo "  create_network.sh local_net wlp2s0"
     echo "----------------------------------------------------------"
     docker network ls
     exit 1
