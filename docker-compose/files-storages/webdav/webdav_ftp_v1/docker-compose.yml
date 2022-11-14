@@ -1,0 +1,34 @@
+version: '3'
+
+networks:
+  default:
+    name: local_net
+services:
+  nginx_webdav:
+#    image: maltokyo/docker-nginx-webdav # comment out this line if you are building from source.
+    build: . # comment out this line if you are just pulling the docker hub image.
+    ports: # enable this if you are not using reverse proxy, otherwise leave commented out
+      - "80:80"
+    volumes:
+      - "./data:/media/data"
+    environment:
+      USERNAME: $WEBDAV_USER
+      PASSWORD: $WEBDAV_PASS
+    networks:
+      default:
+        ipv4_address: 192.168.31.10
+  ftp-server:
+    environment:
+      FTP_PASS: $WEBDAV_USER
+      FTP_USER: $WEBDAV_PASS
+    image: garethflowers/ftp-server
+    ports:
+      - '20-21:20-21/tcp'
+      - '40000-40009:40000-40009/tcp'
+    volumes:
+      - './data:/home/user'
+    networks:
+      default:
+        ipv4_address: 192.168.31.11
+
+      
