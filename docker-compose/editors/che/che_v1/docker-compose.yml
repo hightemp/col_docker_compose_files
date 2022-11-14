@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  che:
+    image: eclipse/che-server
+    ports: 
+      - $PORT:8080
+    environment: 
+      - CHE_HOST=$HOST
+      - CHE_DOCKER_MACHINE_HOST=$HOST
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/data
+    container_name: che
